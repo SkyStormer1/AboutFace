@@ -215,10 +215,22 @@ object Flipper {
         return item.block.getStateForPlacement(BlockPlaceContext(player, hand, stack, hit))
     }
 
+    /**
+     * Which way a block faces, whatever shape its orientation happens to take.
+     *
+     * A crafter does not store a facing at all. It stores an orientation — a front paired with a
+     * top, twelve combinations rather than six — so it has to be read differently, and only its
+     * front is meaningful to turn around. Flipping the front and letting the top fall out of the
+     * rotation that produces it gives the same result a player would get facing the other way, which
+     * is what turning a block around ought to mean.
+     */
     private fun facingOf(state: BlockState?): Direction? {
         if (state == null) return null
-        val property = FACINGS.firstOrNull { state.hasProperty(it) } ?: return null
-        return state.getValue(property)
+        FACINGS.firstOrNull { state.hasProperty(it) }?.let { return state.getValue(it) }
+        if (state.hasProperty(BlockStateProperties.ORIENTATION)) {
+            return state.getValue(BlockStateProperties.ORIENTATION).front()
+        }
+        return null
     }
 
     private fun handWithBlock(player: LocalPlayer): InteractionHand? = when {
