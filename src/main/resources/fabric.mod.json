@@ -1,0 +1,35 @@
+{
+  "schemaVersion": 1,
+  "id": "aboutface",
+  "version": "${version}",
+  "name": "About Face",
+  "description": "Hold a key and place directional blocks facing the opposite way. Works on vanilla servers.",
+  "authors": [
+    "SkyStormer1"
+  ],
+  "contact": {
+    "homepage": "https://github.com/SkyStormer1/AboutFace",
+    "sources": "https://github.com/SkyStormer1/AboutFace",
+    "issues": "https://github.com/SkyStormer1/AboutFace/issues"
+  },
+  "license": "MIT",
+  "environment": "client",
+  "entrypoints": {
+    "client": [
+      {
+        "value": "com.skystormer.aboutface.AboutFaceClient",
+        "adapter": "kotlin"
+      }
+    ]
+  },
+  "mixins": [
+    "aboutface.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=${loader_version}",
+    "fabric-api": "*",
+    "fabric-language-kotlin": ">=${fabric_kotlin_version}",
+    "minecraft": "${minecraft_version}",
+    "java": ">=${java_version}"
+  }
+}

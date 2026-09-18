@@ -1,0 +1,12 @@
+{
+  "required": true,
+  "package": "com.skystormer.aboutface.mixin",
+  "compatibilityLevel": "JAVA_${java_version}",
+  "client": [
+    "MovePlayerPacketMixin",
+    "UseItemOnPacketMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}
