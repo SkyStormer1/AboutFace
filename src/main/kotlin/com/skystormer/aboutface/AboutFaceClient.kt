@@ -1,12 +1,12 @@
 package com.skystormer.aboutface
 
+import com.mojang.blaze3d.platform.InputConstants
 import net.fabricmc.api.ClientModInitializer
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents
 import net.fabricmc.fabric.api.client.keymapping.v1.KeyMappingHelper
 import net.minecraft.client.KeyMapping
 import net.minecraft.client.Minecraft
 import net.minecraft.resources.Identifier
-import org.lwjgl.glfw.GLFW
 
 /**
  * About Face — hold a key and directional blocks go down facing the other way.
@@ -34,7 +34,7 @@ object AboutFaceClient : ClientModInitializer {
         flipKey = KeyMappingHelper.registerKeyMapping(
             KeyMapping(
                 "key.$MOD_ID.flip",
-                GLFW.GLFW_KEY_LEFT_CONTROL,
+                InputConstants.KEY_LCONTROL,
                 KeyMapping.Category.register(Identifier.fromNamespaceAndPath(MOD_ID, "main")),
             )
         )
