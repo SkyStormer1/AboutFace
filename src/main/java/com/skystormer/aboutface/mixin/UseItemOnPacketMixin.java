@@ -27,7 +27,7 @@ public abstract class UseItemOnPacketMixin {
     @Shadow
     @Final
     @Mutable
-    private BlockHitResult blockHit;
+    private BlockHitResult hitResult;
 
     @Inject(method = "<init>(Lnet/minecraft/world/InteractionHand;Lnet/minecraft/world/phys/BlockHitResult;I)V", at = @At("RETURN"))
     private void aboutFace$applyClaimedHit(InteractionHand hand, BlockHitResult hit, int sequence, CallbackInfo ci) {
@@ -37,7 +37,7 @@ public abstract class UseItemOnPacketMixin {
 
         BlockHitResult claimed = Claims.hit;
         if (claimed != null) {
-            this.blockHit = claimed;
+            this.hitResult = claimed;
         }
     }
 }
